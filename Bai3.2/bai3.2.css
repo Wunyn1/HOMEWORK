@@ -1,0 +1,53 @@
+
+body {
+  margin: 0;
+  
+}
+
+.bai1 {
+  background-color: lightblue;
+  padding: 20px;
+}
+
+.bai1 .line1 {
+  color: white;
+}
+
+.bai1 .line2 {
+  color: black;
+}
+
+.bai2 {
+  background-color: #A06D21;
+  color: #FFFFFF;
+  background-image: url("greatwall.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 20px;
+}
+
+.bai2 h1 {
+  text-align: center;
+  color: #FFCC00;
+}
+
+.bai3 {
+  padding: 20px;
+}
+
+.bai3 h2 {
+  color: green;
+}
+
+.bai3 .formula {
+  color: #FF0000;
+}
+
+.bai3 .code {
+  color: #0000CC;
+  background-color: #CCCCCC;
+  padding: 10px;
+  font-family: Consolas;
+}
+
