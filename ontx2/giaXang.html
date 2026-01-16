@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .form{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form{
+      box-shadow: 0 4px 12px rgb(96, 14, 27);
+      border: 2px rgb(96, 14, 27) solid;
+      background-color: rgb(249, 68, 98);
+      color: white;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    form:hover{
+      box-shadow: 0 5px 25px rgb(79, 3, 16);
+    }
+    button{
+      background-color: rgb(246, 209, 96);
+      border: none;
+      border-radius: 5px;
+      padding: 9px;
+      margin-left: 5px;
+      margin-top: 20px;
+    }
+    button:hover{
+      transform: scale(1.1);
+      background-color: rgb(235, 187, 45);
+      cursor: pointer;
+    }
+    .button{
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form">
+  <form>
+    <table>
+      <tr>
+        <th colspan="2">MUA XĂNG DẦU</th>
+      </tr>
+      <tr>
+        <td>Tên người mua</td>
+        <td><input onchange="Change()" id="username" type="text"></td>
+      </tr>
+      <tr>
+        <td>Loại xăng dầu</td>
+        <td>
+          <select name="xang" id="loaiXang" onchange="ChangeType()">
+            <option value="">Chọn loại xăng</option>
+            <option value="Ron95">Ron95</option>
+            <option value="Ron98">Ron89</option>
+            <option value="E10">E10</option>
+            <option value="Diesel">Diesel</option>
+            <option value="XangKC">XăngKC</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Giá(VNĐ/lít)</td>
+        <td><input id="giaXang" type="number" readonly></td>
+      </tr>
+      <tr>
+        <td>Số lượng</td>
+        <td><input onchange="Change()" id="soXang" type="number" min="1" required></td>
+      </tr>
+      <tr>
+        <td>Thành tiền</td>
+        <td><input id="kq" type="text" readonly></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="button">
+          <button type="button" onclick="TienXang()">Tính</button>
+          <button type="reset">Xóa</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+  </div>
+  <script>
+    function Change(){
+      let username = document.getElementById('username').value;
+      let soXang = parseInt(document.getElementById('soXang').value);
+      if(soXang<= 0){
+        alert("số lít bạn nhập không hợp lệ, phải lớn hơn 0");
+        return;
+      }
+      if(username === ""){
+        alert("tên người dùng không được để trống")
+        return;
+      }
+      
+    }
+    function ChangeType(){
+      let type = document.getElementById('loaiXang').value;
+      let price;
+      if(type == "Ron95"){
+        price = 21000;
+      }
+      else if(type == "Ron98"){
+        price = 20000;
+      }
+      else if(type == "E10"){
+        price = 19000;
+      }
+      else if(type == "Diesel"){
+        price = 18000;
+      }
+      else if(type == "XangKC"){
+        price = 17000;
+      }
+      document.getElementById('giaXang').value = price;
+    }
+    function TienXang(){
+      let type = document.getElementById('loaiXang').value;
+      let price = document.getElementById('giaXang').value;
+      let soXang = parseInt(document.getElementById('soXang').value);
+
+      let kq;
+      
+
+      kq = parseInt(price*soXang);
+      document.getElementById('kq').value = kq + " VNĐ"
+    }
+  </script>
+</body>
+</html>

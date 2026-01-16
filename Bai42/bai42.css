@@ -1,0 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.menu{
+  background-color: aquamarine;
+}
+.menu-level-1{
+  display: flex;
+  padding: 10px 20px;
+  list-style: none;
+}
+.menu-level-1 li{
+  list-style: none;
+  
+}

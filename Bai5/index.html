@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      border-collapse: collapse;
+    }
+    tr,td,th{
+      border: 1px black solid;
+    }
+  </style>
+</head>
+<body>
+  <p>
+    Ngày tháng năm sinh: 
+    <select name="" id="day"></select>
+    tháng 
+    <select name="" id="month"></select>
+    năm 
+    <select name="" id="year"></select>
+    <button onclick="check()">Check</button>
+  </p>
+  <form>
+  <table>
+    <tr>
+      <th colspan="2">ax<sup>2</sup> + bx + c = 0</th>
+    </tr>
+    <tr>
+      <td>a=</td>
+      <td><input type="number" id="numa" required></td>
+    </tr>
+    <tr>
+      <td>b=</td>
+      <td><input type="number"  id="numb" required></td>
+    </tr>
+    <tr>
+      <td>c=</td>
+      <td><input type="number" id="numc"  required></td>
+    </tr>
+    <tr>
+      <td>x=</td>
+      <td><input type="text"  id="numx"  readonly></td>
+    </tr>
+  </table>
+  <button type="button" onclick="giaipt()">Tính</button>
+  <button type="submit">Xóa</button>
+</form>
+  <script>
+    let day = document.getElementById("day");
+    let month = document.getElementById("month");
+    let year = document.getElementById("year");
+
+    for(let d = 1; d<=31; d++){
+      day.innerHTML += `<option>${d}</option>`;
+    }
+    for(let m = 1; m<=12; m++){
+      month.innerHTML += `<option>${m}</option>`;
+    }
+    for(let y = 1990; y<=2026;y++){
+      year.innerHTML += `<option>${y}</option>`;
+    }
+
+    function check(){
+      alert(`Ngày ${day.value} tháng ${month.value} năm ${year.value}`)
+    }
+
+    function giaipt(){
+      let a = parseFloat(document.getElementById("numa").value);
+      let b = parseFloat(document.getElementById("numb").value);
+      let c = parseFloat(document.getElementById("numc").value);
+
+      let x;
+
+      if(a == 0){
+        if(b == 0){
+          if(c == 0){
+            x = "vô số nghiệm";
+          }
+          else{
+            x = "vô nghiệm";
+          }
+        }
+        else{
+          x = parseFloat(-c/b);
+        }
+      }else{
+        let dentl = parseFloat(b*b - 4*a*c);
+        if(dentl > 0){
+          let x1 = parseFloat((-b + Math.sqrt(dentl))/(2*a));
+          let x2 = parseFloat((-b - Math.sqrt(dentl))/(2*a));
+          x = `${x1} , ${x2}`;
+        }
+        else if(dentl == 0){
+          x = parseFloat(-b/(2*a));
+        }
+        else{
+          x = "vô nghiệm";
+        }
+      }
+
+      document.getElementById('numx').value = x;
+    }
+
+  </script>
+</body>
+</html>
